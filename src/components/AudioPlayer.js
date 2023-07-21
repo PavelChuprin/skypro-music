@@ -3,7 +3,7 @@ import AudioPlayerTrack from "./AudioPlayerTrack";
 import AudioPlayerVolume from "./AudioPlayerVolume";
 import "../styles/AudioPlayer.css";
 
-const AudioPlayer = () => {
+const AudioPlayer = ({ isLoading }) => {
   return (
     <div className="bar">
       <div className="bar__content">
@@ -11,7 +11,7 @@ const AudioPlayer = () => {
         <div className="bar__player-block">
           <div className="bar__player player">
             <AudioPlayerControls />
-            <AudioPlayerTrack />
+            <AudioPlayerTrack isLoading={isLoading} />
           </div>
           <AudioPlayerVolume />
         </div>

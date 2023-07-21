@@ -1,10 +1,10 @@
-import Track from "./Track";
+import TracksAll from "./TracksAll";
 import TrackFilter from "./TrackFilter";
 import TrackSearch from "./TrackSearch";
 import TrackTitle from "./TrackTitle";
 import "../styles/TrackList.css";
 
-const TrackList = () => {
+const TrackList = ({ isLoading }) => {
   return (
     <div className="main__centerblock centerblock">
       <TrackSearch />
@@ -12,7 +12,7 @@ const TrackList = () => {
       <TrackFilter />
       <div className="centerblock__content">
         <TrackTitle />
-        <Track />
+        <TracksAll isLoading={isLoading} />
       </div>
     </div>
   );

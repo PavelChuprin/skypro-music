@@ -34,33 +34,102 @@
   margin-right: 10px;
 }
 
-._btn-text:hover {
+.btn-text:hover {
   border-color: #d9b6ff;
   color: #d9b6ff;
   cursor: pointer;
 }
 
-._btn-text:active {
+.btn-text:active {
   border-color: #ad61ff;
   color: #ad61ff;
   cursor: pointer;
 }
 
-._btn-icon:hover svg {
+.btn-icon:hover svg {
   fill: transparent;
   stroke: #acacac;
   cursor: pointer;
 }
 
-._btn-icon:active svg {
+.btn-icon:active svg {
   fill: transparent;
   stroke: #ffffff;
   cursor: pointer;
 }
 
-._btn-icon:active,
-._btn-icon:active {
+.btn-icon:active,
+.btn-icon:active {
   fill: #696969;
   stroke: #ffffff;
   cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 48px;
+}
+::-webkit-scrollbar-track {
+  background: #4b4949;
+  border-left: 22px solid #313131;
+  border-right: 22px solid #313131;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-left: 22px solid #313131;
+  border-right: 22px solid #313131;
+}
+
+::-webkit-scrollbar-button {
+  background-color: #313131;
+  border-radius: 24px;
+}
+
+.position-popup {
+  position: relative;
+}
+
+.filter__ul {
+  position: absolute;
+  width: 248px;
+  height: 305px;
+  background-color: #313131;
+  padding: 34px;
+  border-radius: 12px;
+  overflow: auto;
+}
+
+.genre {
+  top: 30px;
+  right: -150px;
+}
+
+.author {
+  top: 30px;
+  right: -95px;
+}
+
+.year {
+  top: 30px;
+  right: -100px;
+}
+
+.active-filter {
+  color: #8c21fd;
+  border-color: #8c21fd;
+  cursor: pointer;
+}
+
+.filter__li {
+  font-family: "StratosSkyeng", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ffffff;
+  padding-bottom: 24px;
+}
+
+.filter__li:hover {
+  cursor: pointer;
+  color: #b672ff;
+  text-decoration: underline;
 }
