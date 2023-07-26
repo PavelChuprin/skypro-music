@@ -1,9 +1,10 @@
-import "./App.css";
-import AudioPlayer from "./components/AudioPlayer";
-import NavMenu from "./components/NavMenu";
-import Sidebar from "./components/Sidebar";
-import TrackList from "./components/TrackList";
+import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
+import NavMenu from "./components/NavMenu/NavMenu";
+import Sidebar from "./components/Sidebar/Sidebar";
+import TrackList from "./components/TrackList/TrackList";
 import React from "react";
+import * as S from "./stylesApp";
+import { GlobalStyles } from "./GlobalStyles";
 
 function App() {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -15,17 +16,18 @@ function App() {
   }, []);
 
   return (
-    <div className="wrapper">
-      <div className="container">
-        <main className="main">
+    <S.Wrapper>
+      <GlobalStyles />
+      <S.Container>
+        <S.Main>
           <NavMenu />
           <TrackList isLoading={isLoading} />
           <Sidebar isLoading={isLoading} />
-        </main>
+        </S.Main>
         <AudioPlayer isLoading={isLoading} />
-        <footer className="footer"></footer>
-      </div>
-    </div>
+        <S.Footer></S.Footer>
+      </S.Container>
+    </S.Wrapper>
   );
 }
 
