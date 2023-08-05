@@ -33,7 +33,7 @@ export const VolumeImage = styled.div`
   margin-right: 17px;
 `;
 
-export const VolumeSvg = styled.div`
+export const VolumeSvg = styled.svg`
   width: 13px;
   height: 18px;
   fill: transparent;

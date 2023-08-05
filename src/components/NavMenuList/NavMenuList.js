@@ -1,23 +1,27 @@
-import * as S from "./styles"
+import * as S from "./styles";
+import { Link } from "react-router-dom";
 
 const NavMenuList = () => {
+  const removeLocalStorage = () => {
+    localStorage.removeItem("user");
+  };
   return (
     <S.NavMenu>
       <S.MenuList>
         <S.MenuItem>
-          <S.MenuLink href="http://">
-            Главное
-          </S.MenuLink>
+          <Link to="/">
+            <S.MenuLink>Главное</S.MenuLink>
+          </Link>
         </S.MenuItem>
         <S.MenuItem>
-          <S.MenuLink href="http://">
-            Мой плейлист
-          </S.MenuLink>
+          <Link to="/favorites">
+            <S.MenuLink>Мой плейлист</S.MenuLink>
+          </Link>
         </S.MenuItem>
         <S.MenuItem>
-          <S.MenuLink href="http://">
-            Войти
-          </S.MenuLink>
+          <Link to="/login">
+            <S.MenuLink onClick={removeLocalStorage}>Выйти</S.MenuLink>
+          </Link>
         </S.MenuItem>
       </S.MenuList>
     </S.NavMenu>

@@ -1,4 +1,5 @@
 import * as S from "./styles";
+import { Link } from "react-router-dom";
 
 const AudioPlayerTrack = ({ isLoading }) => {
   return (
@@ -17,12 +18,18 @@ const AudioPlayerTrack = ({ isLoading }) => {
               </S.TrackPlaySvg>
             </S.TrackPlayImage>
             <S.TrackPlayAuthor>
-              <S.TrackPlayAuthorLink href="http://">
-                Ты та...
-              </S.TrackPlayAuthorLink>
+              <Link to="/">
+                <S.TrackPlayAuthorLink href="http://">
+                  Ты та...
+                </S.TrackPlayAuthorLink>
+              </Link>
             </S.TrackPlayAuthor>
             <S.TrackPlayAlbum>
-              <S.TrackPlayAlbumLink href="http://">Баста</S.TrackPlayAlbumLink>
+              <Link to="/">
+                <S.TrackPlayAlbumLink href="http://">
+                  Баста
+                </S.TrackPlayAlbumLink>
+              </Link>
             </S.TrackPlayAlbum>
           </>
         )}

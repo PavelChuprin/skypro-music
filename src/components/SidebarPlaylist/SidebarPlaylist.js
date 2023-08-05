@@ -1,54 +1,30 @@
 import * as S from "./styles";
+import { Link } from "react-router-dom";
 
-const SidebarPlaylist = ({ isLoading }) => {
+const SidebarPlaylist = ({ isLoading, categorys }) => {
   return (
     <S.SidebarBlock>
       <S.SidebarList>
-        <S.SidebarItem>
-          <S.SidebarLink href="http://">
-            {isLoading ? (
-              <S.SidebarImg
-                src="img/Skeleton Sidebar.png"
-                alt="Skeleton Sidebar"
-              ></S.SidebarImg>
-            ) : (
-              <S.SidebarImg
-                src="img/playlist01.png"
-                alt="day's playlist"
-              ></S.SidebarImg>
-            )}
-          </S.SidebarLink>
-        </S.SidebarItem>
-        <S.SidebarItem>
-          <S.SidebarLink href="http://">
-            {isLoading ? (
-              <S.SidebarImg
-                src="img/Skeleton Sidebar.png"
-                alt="Skeleton Sidebar"
-              ></S.SidebarImg>
-            ) : (
-              <S.SidebarImg
-                src="img/playlist02.png"
-                alt="day's playlist"
-              ></S.SidebarImg>
-            )}
-          </S.SidebarLink>
-        </S.SidebarItem>
-        <S.SidebarItem>
-          <S.SidebarLink href="http://">
-            {isLoading ? (
-              <S.SidebarImg
-                src="img/Skeleton Sidebar.png"
-                alt="Skeleton Sidebar"
-              ></S.SidebarImg>
-            ) : (
-              <S.SidebarImg
-                src="img/playlist03.png"
-                alt="day's playlist"
-              ></S.SidebarImg>
-            )}
-          </S.SidebarLink>
-        </S.SidebarItem>
+        {categorys.map((category) => (
+          <S.SidebarItem key={category.id}>
+            <Link to={`/category/${category.id}`}>
+              <S.SidebarLink>
+                {isLoading ? (
+                  <S.SidebarImg
+                    src="img/Skeleton Sidebar.png"
+                    alt="Skeleton Sidebar"
+                  ></S.SidebarImg>
+                ) : (
+                  <S.SidebarImg
+                    src={`${category.image}`}
+                    alt={`${category.title}`}
+                    title={`${category.description}`}
+                  ></S.SidebarImg>
+                )}
+              </S.SidebarLink>
+            </Link>
+          </S.SidebarItem>
+        ))}
       </S.SidebarList>
     </S.SidebarBlock>
   );

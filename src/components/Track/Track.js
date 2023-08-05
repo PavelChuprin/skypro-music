@@ -1,4 +1,5 @@
 import * as S from "./styles";
+import { Link } from "react-router-dom";
 
 const Track = ({ track, isLoading }) => {
   return (
@@ -14,17 +15,23 @@ const Track = ({ track, isLoading }) => {
               </S.TrackTitleSvg>
             </S.TrackTitleImage>
             <S.TrackTitleText>
-              <S.TrackTitleLink href="http://">
-                {track.name} <S.TrackTitleSpan></S.TrackTitleSpan>
-                <S.TrackTitleSpan>{track.subname}</S.TrackTitleSpan>
-              </S.TrackTitleLink>
+              <Link to="/">
+                <S.TrackTitleLink>
+                  {track.name} <S.TrackTitleSpan></S.TrackTitleSpan>
+                  <S.TrackTitleSpan>{track.subname}</S.TrackTitleSpan>
+                </S.TrackTitleLink>
+              </Link>
             </S.TrackTitleText>
           </S.TrackTitle>
           <S.TrackAuthor>
-            <S.TrackAuthorLink href="http://">{track.author}</S.TrackAuthorLink>
+            <Link to="/">
+              <S.TrackAuthorLink>{track.author}</S.TrackAuthorLink>
+            </Link>
           </S.TrackAuthor>
           <S.TrackAlbum>
-            <S.TrackAlbumLink href="http://">{track.album}</S.TrackAlbumLink>
+            <Link to="/">
+              <S.TrackAlbumLink>{track.album}</S.TrackAlbumLink>
+            </Link>
           </S.TrackAlbum>
           <S.TrackTime>
             <S.TrackTimeSvg alt="time">
