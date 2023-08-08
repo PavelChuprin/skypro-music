@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import { Link } from "react-router-dom";
 
-const AudioPlayerTrack = ({ isLoading }) => {
+const AudioPlayerTrack = ({ isLoading, currentTrack }) => {
   return (
     <S.PlayerTrackPlay>
       <S.TrackPlayContain>
@@ -20,14 +20,14 @@ const AudioPlayerTrack = ({ isLoading }) => {
             <S.TrackPlayAuthor>
               <Link to="/">
                 <S.TrackPlayAuthorLink href="http://">
-                  Ты та...
+                  {currentTrack.name}
                 </S.TrackPlayAuthorLink>
               </Link>
             </S.TrackPlayAuthor>
             <S.TrackPlayAlbum>
               <Link to="/">
                 <S.TrackPlayAlbumLink href="http://">
-                  Баста
+                  {currentTrack.author}
                 </S.TrackPlayAlbumLink>
               </Link>
             </S.TrackPlayAlbum>

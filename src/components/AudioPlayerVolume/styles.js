@@ -46,3 +46,12 @@ export const VolumeProgress = styled.div`
 export const VolumeProgressLine = styled.input`
   width: 109px;
 `;
+
+export const ClosePlayer = styled.div`
+  align-items: center;
+  padding-left: 80px;
+  font-size: 24px;
+  &:hover {
+    text-shadow: #d9b6ff 0 0 20px;
+  }
+`;

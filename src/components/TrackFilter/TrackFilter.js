@@ -4,7 +4,7 @@ import TrackFilterAuthor from "../TrackFilterAuthor/TrackFilterAuthor";
 import TrackFilterYear from "../TrackFilterYear/TrackFilterYear";
 import TrackFilterGenre from "../TrackFilterGenre/TrackFilterGenre";
 
-const TrackFilter = () => {
+const TrackFilter = ({ tracks }) => {
   const [filter, setFilter] = useState("");
 
   function switchFilter(state) {
@@ -26,7 +26,7 @@ const TrackFilter = () => {
         исполнителю
       </S.FilterButton>
       <S.PositionPopup>
-        {filter === "author" && <TrackFilterAuthor />}
+        {filter === "author" && <TrackFilterAuthor tracks={tracks} />}
       </S.PositionPopup>
 
       <S.FilterButton
@@ -37,7 +37,7 @@ const TrackFilter = () => {
         году выпуска
       </S.FilterButton>
       <S.PositionPopup>
-        {filter === "year" && <TrackFilterYear />}
+        {filter === "year" && <TrackFilterYear tracks={tracks} />}
       </S.PositionPopup>
 
       <S.FilterButton
@@ -48,7 +48,7 @@ const TrackFilter = () => {
         жанру
       </S.FilterButton>
       <S.PositionPopup>
-        {filter === "genre" && <TrackFilterGenre />}
+        {filter === "genre" && <TrackFilterGenre tracks={tracks} />}
       </S.PositionPopup>
     </S.CenterblockFilter>
   );

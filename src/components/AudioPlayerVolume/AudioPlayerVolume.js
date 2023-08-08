@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-const AudioPlayerVolume = () => {
+const AudioPlayerVolume = ({ setVisibleAudioPlayer }) => {
   return (
     <S.BarVolumeBlock>
       <S.VolumeContent>
@@ -17,6 +17,12 @@ const AudioPlayerVolume = () => {
           ></S.VolumeProgressLine>
         </S.VolumeProgress>
       </S.VolumeContent>
+      <S.ClosePlayer
+        onClick={() => setVisibleAudioPlayer(false)}
+        className="_btn"
+      >
+        ✖
+      </S.ClosePlayer>
     </S.BarVolumeBlock>
   );
 };
