@@ -56,7 +56,7 @@ export const TrackTitleSvg = styled.svg`
   stroke: #4e4e4e;
 `;
 
-export const TrackTitleLink = styled.a`
+export const TrackTitleLink = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -82,7 +82,7 @@ export const TrackAuthor = styled.div`
   justify-content: flex-start;
 `;
 
-export const TrackAuthorLink = styled.a`
+export const TrackAuthorLink = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -95,7 +95,7 @@ export const TrackAlbum = styled.div`
   width: 245px;
 `;
 
-export const TrackAlbumLink = styled.a`
+export const TrackAlbumLink = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

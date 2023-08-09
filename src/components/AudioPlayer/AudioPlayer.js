@@ -3,7 +3,7 @@ import AudioPlayerTrack from "../AudioPlayerTrack/AudioPlayerTrack";
 import AudioPlayerVolume from "../AudioPlayerVolume/AudioPlayerVolume";
 import * as S from "./styles";
 
-const AudioPlayer = ({ isLoading, currentTrack, setVisibleAudioPlayer }) => {
+const AudioPlayer = ({ currentTrack, setVisibleAudioPlayer }) => {
   return (
     <S.Bar>
       <S.BarContent>
@@ -12,10 +12,7 @@ const AudioPlayer = ({ isLoading, currentTrack, setVisibleAudioPlayer }) => {
         <S.BarPlayerBlock>
           <S.BarPlayer>
             <AudioPlayerControls />
-            <AudioPlayerTrack
-              isLoading={isLoading}
-              currentTrack={currentTrack}
-            />
+            <AudioPlayerTrack currentTrack={currentTrack} />
           </S.BarPlayer>
           <AudioPlayerVolume setVisibleAudioPlayer={setVisibleAudioPlayer} />
         </S.BarPlayerBlock>
