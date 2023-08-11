@@ -65,7 +65,8 @@ body {
   cursor: pointer;
 }
 
-._btn-icon:active svg {
+._btn-icon:active svg,
+._btn-icon-active svg {
   fill: transparent;
   stroke: #ffffff;
   cursor: pointer;
