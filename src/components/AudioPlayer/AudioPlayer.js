@@ -10,6 +10,7 @@ const AudioPlayer = ({ currentTrack, setVisibleAudioPlayer }) => {
   const [currentTime, setCurrentTime] = React.useState(0);
   const [volume, setVolume] = React.useState(50);
   const [isRepeat, setIsRepeat] = React.useState(false);
+  const [duration, setDuration] = React.useState(0);
   const audioRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -24,6 +25,16 @@ const AudioPlayer = ({ currentTrack, setVisibleAudioPlayer }) => {
       audioRef.current.play();
       setIsPlaying(true);
     }
+  };
+
+  const handleLoadStart = () => {
+    const src = currentTrack.track_file;
+    const audio = new Audio(src);
+    audio.onloadedmetadata = function () {
+      if (audio.readyState > 0) {
+        setDuration(audio.duration);
+      }
+    };
   };
 
   const hundleTimeUpdate = () => {
@@ -63,17 +74,18 @@ const AudioPlayer = ({ currentTrack, setVisibleAudioPlayer }) => {
         controls
         autoPlay
         hidden
+        onLoadStart={handleLoadStart}
         onTimeUpdate={hundleTimeUpdate}
       ></audio>
       <S.BarContent>
         <S.Timer>
           <span>{timer(currentTime)} / </span>
-          <span>{timer(currentTrack.duration_in_seconds)}</span>
+          <span>{timer(duration)}</span>
         </S.Timer>
         <S.BarPlayerProgress
           type="range"
           min={0}
-          max={currentTrack.duration_in_seconds}
+          max={duration}
           value={currentTime}
           step={0.01}
           onChange={changeCurrentTime}
