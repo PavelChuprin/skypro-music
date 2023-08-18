@@ -1,13 +1,21 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import * as S from "./styles/NotFoundPage.styles";
 
 const NotFoundPage = () => {
-	return (
-		<div>
-			<h1>404</h1>
-			<p>Страница не найдена!</p>
-			<Link to="/">На главную</Link>
-		</div>
-	)
-}
+  return (
+    <S.PageContainer>
+      <S.ModalForm>
+        <S.Title>404</S.Title>
+        <S.Text>Страница не найдена </S.Text>
+        <S.Subtext>
+          Возможно, она была удалена или перенесена на другой адрес
+        </S.Subtext>
+        <Link to="/">
+          <S.PrimaryButton>Вернуться на главную</S.PrimaryButton>
+        </Link>
+      </S.ModalForm>
+    </S.PageContainer>
+  );
+};
 
 export { NotFoundPage };

@@ -1,9 +1,11 @@
 import * as S from "./styles";
 import { Link } from "react-router-dom";
+import { removeLocalStorage } from "../../localStorage";
 
-const NavMenuList = () => {
-  const removeLocalStorage = () => {
-    localStorage.removeItem("user");
+const NavMenuList = ({ setUser }) => {
+  const handleClickLogout = () => {
+    setUser(null);
+    removeLocalStorage();
   };
   return (
     <S.NavMenu>
@@ -20,7 +22,7 @@ const NavMenuList = () => {
         </S.MenuItem>
         <S.MenuItem>
           <Link to="/login">
-            <S.MenuLink onClick={removeLocalStorage}>Выйти</S.MenuLink>
+            <S.MenuLink onClick={handleClickLogout}>Выйти</S.MenuLink>
           </Link>
         </S.MenuItem>
       </S.MenuList>

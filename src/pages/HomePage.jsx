@@ -6,7 +6,7 @@ import TrackList from "../components/TrackList/TrackList";
 import * as S from "../stylesApp";
 import { getTracksAll } from "../API";
 
-const HomePage = () => {
+const HomePage = ({ setUser }) => {
   const [tracks, setTracks] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [visibleAudioPlayer, setVisibleAudioPlayer] = React.useState(false);
@@ -30,7 +30,7 @@ const HomePage = () => {
   return (
     <S.Container>
       <S.Main>
-        <NavMenu />
+        <NavMenu setUser={setUser} />
         <TrackList
           isLoading={isLoading}
           tracks={tracks}
@@ -38,7 +38,7 @@ const HomePage = () => {
           setVisibleAudioPlayer={setVisibleAudioPlayer}
           getTracksError={getTracksError}
         />
-        <Sidebar isLoading={isLoading} />
+        <Sidebar isLoading={isLoading} setUser={setUser} />
       </S.Main>
       {visibleAudioPlayer && (
         <AudioPlayer

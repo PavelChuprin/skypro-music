@@ -6,15 +6,22 @@ import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedeRoute";
+import { UserContext } from "./App";
 
-export const AppRoutes = ({user}) => {
+export const AppRoutes = ({ setUser }) => {
   return (
     <Routes>
-      <Route path="login" element={<LoginPage />} />
-      <Route path="register" element={<RegisterPage />} />
+      <Route path="login" element={<LoginPage setUser={setUser} />} />
+      <Route path="register" element={<RegisterPage setUser={setUser} />} />
 
-      <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>
-        <Route path="/" element={<HomePage />} />
+      <Route
+        element={
+          <UserContext.Consumer>
+            {(user) => <ProtectedRoute user={user} redirectPath={"/login"} />}
+          </UserContext.Consumer>
+        }
+      >
+        <Route path="/" element={<HomePage setUser={setUser} />} />
         <Route path="favorites" element={<FavoritesPage />} />
         <Route path="category/:id" element={<CategoryPage />} />
       </Route>
@@ -22,4 +29,4 @@ export const AppRoutes = ({user}) => {
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
-}
+};

@@ -1,16 +1,20 @@
 import * as S from "./stylesApp";
 import { GlobalStyles } from "./GlobalStyles";
 import { AppRoutes } from "./routes";
+import React from "react";
+import { getLocalStorage } from "./localStorage";
+
+export const UserContext = React.createContext(null);
 
 function App() {
-  const user = localStorage.getItem("user")
-    ? localStorage.getItem("user")
-    : { isAllowed: false };
+  const [user, setUser] = React.useState(getLocalStorage());
 
   return (
     <S.Wrapper>
       <GlobalStyles />
-      <AppRoutes user={user} />
+      <UserContext.Provider value={user}>
+        <AppRoutes setUser={setUser} />
+      </UserContext.Provider>
     </S.Wrapper>
   );
 }

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import NavMenuBurger from "../NavMenuBurger/NavMenuBurger";
 import * as S from "./styles";
 
-const NavMenu = () => {
+const NavMenu = ({ setUser }) => {
   return (
     <S.MainNav>
       <S.NavLogo>
@@ -10,7 +10,7 @@ const NavMenu = () => {
           <S.LogoImage src="img/logo.png" alt="logo"></S.LogoImage>
         </Link>
       </S.NavLogo>
-      <NavMenuBurger />
+      <NavMenuBurger setUser={setUser} />
     </S.MainNav>
   );
 };
