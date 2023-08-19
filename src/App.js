@@ -3,8 +3,7 @@ import { GlobalStyles } from "./GlobalStyles";
 import { AppRoutes } from "./routes";
 import React from "react";
 import { getLocalStorage } from "./localStorage";
-
-export const UserContext = React.createContext(null);
+import { UserContext } from "./hooks/useUserContext";
 
 function App() {
   const [user, setUser] = React.useState(getLocalStorage());
