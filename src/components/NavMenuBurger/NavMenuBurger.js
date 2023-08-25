@@ -2,7 +2,7 @@ import { useState } from "react";
 import NavMenuList from "../NavMenuList/NavMenuList";
 import * as S from "./styles";
 
-const NavMenuBurger = ({ setUser }) => {
+const NavMenuBurger = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
   function switchBurgerButton() {
@@ -16,7 +16,7 @@ const NavMenuBurger = ({ setUser }) => {
         <S.BurgerLine></S.BurgerLine>
         <S.BurgerLine></S.BurgerLine>
       </S.NavBurger>
-      {openMenu && <NavMenuList setUser={setUser} />}
+      {openMenu && <NavMenuList />}
     </>
   );
 };

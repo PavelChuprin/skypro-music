@@ -5,7 +5,6 @@ import * as S from "./styles";
 const TracksAll = ({
   isLoading,
   tracks,
-  setCurrentTrack,
   setVisibleAudioPlayer,
   getTracksError,
 }) => {
@@ -24,7 +23,6 @@ const TracksAll = ({
               <Track
                 key={track.id}
                 track={track}
-                setCurrentTrack={setCurrentTrack}
                 setVisibleAudioPlayer={setVisibleAudioPlayer}
               />
             ))}

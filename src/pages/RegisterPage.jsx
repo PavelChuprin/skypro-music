@@ -3,8 +3,10 @@ import * as S from "./styles/RegisterLogin.style";
 import React from "react";
 import { fetchRegister } from "../API";
 import { setLocalStorage } from "../localStorage";
+import { UserContext } from "../App";
 
-function RegisterPage({ setUser }) {
+function RegisterPage() {
+  const { setUser } = React.useContext(UserContext);
   const [errorMessage, setErrorMessage] = React.useState(null);
   const [disabledButtonLogin, setDisabledButtonLogin] = React.useState(false);
   const emailRef = React.useRef(null);
@@ -63,7 +65,7 @@ function RegisterPage({ setUser }) {
   return (
     <S.PageContainer>
       <S.ModalForm>
-        <Link to="/login">
+        <Link to="/">
           <S.ModalLogo>
             <S.ModalLogoImage src="/img/logo_modal.png" alt="logo" />
           </S.ModalLogo>

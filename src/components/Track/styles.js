@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { css, keyframes, styled } from "styled-components";
 
 export const PlaylistTrack = styled.div`
   display: -webkit-box;
@@ -14,6 +14,13 @@ export const PlaylistTrack = styled.div`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: #222222;
+  }
+  &:active {
+    background-color: #4e4e4e;
+  }
 `;
 
 export const TrackTitle = styled.div`
@@ -48,6 +55,31 @@ export const TrackTitleImage = styled.div`
 `;
 
 export const TrackTitleText = styled.div``;
+
+const playing = keyframes`
+0% {
+	transform: scale(0.8);
+}
+50% {
+	transform: scale(1.6);
+}
+100% {
+	transform: scale(0.8);
+}
+`;
+
+export const TrackTitleCurrent = styled.div`
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ad61ff;
+  ${(props) =>
+    props.$isPlaying &&
+    css`
+      animation: ${playing} 1s linear 0s infinite alternate none;
+    `}
+`;
 
 export const TrackTitleSvg = styled.svg`
   width: 18px;

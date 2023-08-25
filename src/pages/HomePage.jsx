@@ -5,12 +5,13 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import TrackList from "../components/TrackList/TrackList";
 import * as S from "../stylesApp";
 import { getTracksAll } from "../API";
+import { useDispatch } from "react-redux";
+import { setPlaylist } from "../redux/slices/playerSlice";
 
-const HomePage = ({ setUser }) => {
+const HomePage = () => {
   const [tracks, setTracks] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [visibleAudioPlayer, setVisibleAudioPlayer] = React.useState(false);
-  const [currentTrack, setCurrentTrack] = React.useState(null);
   const [getTracksError, setGetTracksError] = React.useState(null);
 
   React.useEffect(() => {
@@ -27,24 +28,25 @@ const HomePage = ({ setUser }) => {
     fetchData();
   }, []);
 
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(setPlaylist(tracks));
+  }, [dispatch, tracks]);
+
   return (
     <S.Container>
       <S.Main>
-        <NavMenu setUser={setUser} />
+        <NavMenu />
         <TrackList
           isLoading={isLoading}
           tracks={tracks}
-          setCurrentTrack={setCurrentTrack}
           setVisibleAudioPlayer={setVisibleAudioPlayer}
           getTracksError={getTracksError}
         />
-        <Sidebar isLoading={isLoading} setUser={setUser} />
+        <Sidebar isLoading={isLoading} />
       </S.Main>
       {visibleAudioPlayer && (
-        <AudioPlayer
-          currentTrack={currentTrack}
-          setVisibleAudioPlayer={setVisibleAudioPlayer}
-        />
+        <AudioPlayer setVisibleAudioPlayer={setVisibleAudioPlayer} />
       )}
       <S.Footer></S.Footer>
     </S.Container>

@@ -1,8 +1,11 @@
 import * as S from "./styles";
 import { Link } from "react-router-dom";
 import { removeLocalStorage } from "../../localStorage";
+import React from "react";
+import { UserContext } from "../../App";
 
-const SidebarPersonal = ({ user, setUser }) => {
+const SidebarPersonal = () => {
+  const { user, setUser } = React.useContext(UserContext);
   const handleClickLogout = () => {
     setUser(null);
     removeLocalStorage();
