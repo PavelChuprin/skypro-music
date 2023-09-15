@@ -55,7 +55,7 @@ body {
 
 ._btn-text:active {
   border-color: #ad61ff;
-  color: #ad61ff;
+  color: #;
   cursor: pointer;
 }
 
@@ -76,6 +76,12 @@ body {
 ._btn-icon:active {
   fill: #696969;
   stroke: #ffffff;
+  cursor: pointer;
+}
+
+._btn-icon-like svg {
+	fill: #ad61ff;
+  stroke: ffffff;
   cursor: pointer;
 }
 `;

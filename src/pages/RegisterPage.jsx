@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-import * as S from "./styles/RegisterLogin.style";
+import * as S from "./styles/RegisterLogin.styles";
 import React from "react";
-import { fetchRegister } from "../API";
+import { fetchRegister, getAccessToken } from "../API";
 import { setLocalStorage } from "../localStorage";
 import { UserContext } from "../App";
 
@@ -27,7 +27,9 @@ function RegisterPage() {
       }
 
       const userData = await fetchRegister(email, password);
+      const accessToken = await getAccessToken(email, password);
 
+      userData.accessToken = accessToken;
       setUser(userData);
       setLocalStorage(userData);
       setErrorMessage(null);

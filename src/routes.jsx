@@ -5,7 +5,9 @@ import { CategoryPage } from "./pages/CategoryPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
-import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedeRoute";
+import { ProtectedRoute } from "./ProtectedeRoute";
+import { Layout } from "./components/Layout";
+import React from "react";
 
 export const AppRoutes = () => {
   return (
@@ -14,9 +16,11 @@ export const AppRoutes = () => {
       <Route path="register" element={<RegisterPage />} />
 
       <Route element={<ProtectedRoute redirectPath={"/login"} />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="favorites" element={<FavoritesPage />} />
-        <Route path="category/:id" element={<CategoryPage />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="favorites" element={<FavoritesPage />} />
+          <Route path="category/:id" element={<CategoryPage />} />
+        </Route>
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />

@@ -6,6 +6,7 @@ const initialState = {
   track: null,
   shuffle: false,
   shufflePlaylist: [],
+  visiblePlayer: false,
 };
 
 const playerSlice = createSlice({
@@ -25,10 +26,20 @@ const playerSlice = createSlice({
     setIsShuffle(state) {
       state.shuffle = !state.shuffle;
     },
+    setVisiblePlayer(state) {
+      state.visiblePlayer = !state.visiblePlayer;
+    },
   },
 });
 
-export const { setCurrentTrack, setIsPlaying, setPlaylist, setIsShuffle } =
-  playerSlice.actions;
+export const selectTracks = (state) => state.track.playlist;
+
+export const {
+  setCurrentTrack,
+  setIsPlaying,
+  setPlaylist,
+  setIsShuffle,
+  setVisiblePlayer,
+} = playerSlice.actions;
 
 export default playerSlice.reducer;
