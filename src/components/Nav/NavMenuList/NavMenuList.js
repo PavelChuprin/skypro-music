@@ -4,9 +4,6 @@ import { removeLocalStorage } from "../../../localStorage";
 import React from "react";
 import { UserContext } from "../../../App";
 import { useSelector } from "react-redux";
-import { selectPlaylistFavorites } from "../../../redux/slices/favoritesSlice";
-import { useGetFavoritesPlaylistQuery } from "../../../services/tracks";
-
 
 const NavMenuList = () => {
   const { setUser } = React.useContext(UserContext);
@@ -14,9 +11,8 @@ const NavMenuList = () => {
     setUser(null);
     removeLocalStorage();
   };
-	
-	const { data } = useGetFavoritesPlaylistQuery();
-	const playlistFavorites = useSelector((state) => state.favorites.playlist);
+
+  const playlistFavorites = useSelector((state) => state.favorites.playlist);
 
   return (
     <S.NavMenu>
@@ -28,8 +24,14 @@ const NavMenuList = () => {
         </S.MenuItem>
         <S.MenuItem>
           <Link to="/favorites">
-            {/* <S.MenuLink>Мой плейлист <span>{playlistFavorites.length ? `( ${playlistFavorites.length} )` : ''}</span></S.MenuLink> */}
-						<S.MenuLink>Мой плейлист</S.MenuLink>
+            <S.MenuLink>
+              Мой плейлист{" "}
+              <span>
+                {playlistFavorites.length
+                  ? `( ${playlistFavorites.length} )`
+                  : ""}
+              </span>
+            </S.MenuLink>
           </Link>
         </S.MenuItem>
         <S.MenuItem>

@@ -5,7 +5,7 @@ import { CategoryPage } from "./pages/CategoryPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
-import { ProtectedRoute } from "./ProtectedeRoute";
+import { ProtectedRoute } from "./components/ProtectedeRoute";
 import { Layout } from "./components/Layout";
 import React from "react";
 
@@ -19,7 +19,7 @@ export const AppRoutes = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="favorites" element={<FavoritesPage />} />
-          <Route path="category/:id" element={<CategoryPage />} />
+          <Route path="selection/:id" element={<CategoryPage />} />
         </Route>
       </Route>
 

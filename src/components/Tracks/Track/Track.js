@@ -51,20 +51,18 @@ const Track = ({ track }) => {
   const [deleteFromFavorites, { error: errorDislike }] =
     useDeleteFromFavoritesMutation();
 
+  const playlistFavorites = useSelector((state) => state.favorites.playlist);
+  const isLike = playlistFavorites?.some((item) => item.id === track.id);
+
   React.useEffect(() => {
     dispatch(setFavoritesPlaylist(data));
   }, [dispatch, data]);
 
-  const playlistFavorites = useSelector((state) => state.favorites.playlist);
-  const isLike = playlistFavorites?.some((item) => item.id === track.id);
-
   const handleClickLike = (id) => {
-    console.log("LIKE добавляем трек с id", id);
     addToFavorites(id);
     dispatch(addToFavoritesPlaylist(track));
   };
   const handleClickDislike = (id) => {
-    console.log("DISLIKE удаляем трек с id", id);
     deleteFromFavorites(id);
     dispatch(deleteFromFavoritesPlaylist(track));
   };

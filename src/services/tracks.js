@@ -24,8 +24,8 @@ export const apiTracks = createApi({
         headers: {
           Authorization: `Bearer ${getTokenLocalStorage()}`,
         },
-        providesTags: [DATA_TAG],
       }),
+      providesTags: [DATA_TAG],
     }),
     addToFavorites: builder.mutation({
       query: (id) => ({
@@ -34,8 +34,8 @@ export const apiTracks = createApi({
         headers: {
           Authorization: `Bearer ${getTokenLocalStorage()}`,
         },
-        invalidatesTags: [DATA_TAG],
       }),
+      invalidatesTags: [DATA_TAG],
     }),
     deleteFromFavorites: builder.mutation({
       query: (id) => ({
@@ -44,8 +44,8 @@ export const apiTracks = createApi({
         headers: {
           Authorization: `Bearer ${getTokenLocalStorage()}`,
         },
-        invalidatesTags: [DATA_TAG],
       }),
+      invalidatesTags: [DATA_TAG],
     }),
     getSelection: builder.query({
       query: () => "selection/",
@@ -55,8 +55,8 @@ export const apiTracks = createApi({
         method: "GET",
         url: `selection/${id}/`,
       }),
-      providesTags: [DATA_TAG],
     }),
+    providesTags: [DATA_TAG],
   }),
 });
 

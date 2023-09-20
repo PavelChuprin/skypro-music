@@ -7,17 +7,9 @@ import {
   setIsPlaying,
   setVisiblePlayer,
 } from "../../../redux/slices/playerSlice";
-import {
-  deleteFromFavoritesPlaylist,
-  selectPlaylistFavorites,
-  setFavoritesPlaylist,
-  toggleFavorites,
-} from "../../../redux/slices/favoritesSlice";
+import { deleteFromFavoritesPlaylist } from "../../../redux/slices/favoritesSlice";
 import React from "react";
-import {
-  useDeleteFromFavoritesMutation,
-  useGetFavoritesPlaylistQuery,
-} from "../../../services/tracks";
+import { useDeleteFromFavoritesMutation } from "../../../services/tracks";
 import {
   getLocalStorage,
   getRefreshTokenLocalStorage,
@@ -49,7 +41,6 @@ const TrackFavorite = ({ favTrack }) => {
     useDeleteFromFavoritesMutation();
 
   const handleClickDislike = (id) => {
-    console.log("DISLIKE удаляем трек с id =>", id);
     deleteFromFavorites(id);
     dispatch(deleteFromFavoritesPlaylist(favTrack));
   };
@@ -115,7 +106,7 @@ const TrackFavorite = ({ favTrack }) => {
       </S.TrackAlbum>
       <S.TrackTime>
         <S.TrackLike
-          onClick={() => handleClickDislike(favTrack)}
+          onClick={() => handleClickDislike(favTrack.id)}
           className="_btn-icon-like"
         >
           <S.TrackLikeSvg alt="time">

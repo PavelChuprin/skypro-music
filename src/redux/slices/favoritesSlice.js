@@ -10,20 +10,20 @@ const favoritesSlice = createSlice({
   reducers: {
     addToFavoritesPlaylist: (state, action) => {
       const favoriteTrack = action.payload;
-      const isExists = state.playlist.some((t) => t.id === favoriteTrack.id);
+      const isExists = state.playlist?.some((t) => t.id === favoriteTrack.id);
       if (!isExists) {
-        state.playlist.push(favoriteTrack);
+        state.playlist?.push(favoriteTrack);
       }
     },
     deleteFromFavoritesPlaylist: (state, action) => {
       const favoriteTrack = action.payload;
-      const isExists = state.playlist.some((t) => t.id === favoriteTrack.id);
+      const isExists = state.playlist?.some((t) => t.id === favoriteTrack.id);
       if (isExists) {
-        const index = state.playlist.findIndex(
+        const index = state.playlist?.findIndex(
           (item) => item.id === favoriteTrack.id
         );
         if (index !== -1) {
-          state.playlist.splice(index, 1);
+          state.playlist?.splice(index, 1);
         }
       }
     },
