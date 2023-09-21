@@ -1,17 +1,25 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Track from "../Track/Track";
 import { TrackSkeleton } from "../Track/TrackSkeleton";
 import * as S from "./styles";
 import { setPlaylist } from "../../../redux/slices/playerSlice";
-import { useGetAllTracksQuery } from "../../../services/tracks";
-import { SearchContext } from "../../../App";
+import {
+  useGetAllTracksQuery,
+  useGetFavoritesPlaylistQuery,
+} from "../../../services/tracks";
 import React from "react";
+import { setFavoritesPlaylist } from "../../../redux/slices/favoritesSlice";
 
 const TracksAll = () => {
-  const { searchValue } = React.useContext(SearchContext);
+  const searchValue = useSelector((state) => state.filter.search);
   const dispatch = useDispatch();
 
+  const { currentData } = useGetFavoritesPlaylistQuery();
   const { isLoading, data, error } = useGetAllTracksQuery();
+
+  React.useEffect(() => {
+    dispatch(setFavoritesPlaylist(currentData));
+  }, [currentData, dispatch]);
 
   React.useEffect(() => {
     dispatch(setPlaylist(data));

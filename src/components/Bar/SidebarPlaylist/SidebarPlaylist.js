@@ -11,10 +11,6 @@ const SidebarPlaylist = () => {
 
   const { isLoading, error } = useGetSelectionQuery();
 
-  const handleClickSelector = (id) => {
-    console.log(id);
-  };
-
   return (
     <S.SidebarBlock>
       <S.SidebarList>
@@ -24,7 +20,7 @@ const SidebarPlaylist = () => {
           CATEGORYS.map((category) => (
             <S.SidebarItem key={category.id}>
               <Link to={`/selection/${category.id}`}>
-                <S.SidebarLink onClick={() => handleClickSelector(category.id)}>
+                <S.SidebarLink>
                   <S.SidebarImg
                     src={`${category.image}`}
                     alt={`${category.title}`}
@@ -35,7 +31,7 @@ const SidebarPlaylist = () => {
           ))
         ) : (
           <S.SidebarItem>
-            Не удалось загрузить подборки, попробуйте позже.
+            Подборки не найдены, попробуйте позже.
             <span>{error.error}</span>
           </S.SidebarItem>
         )}

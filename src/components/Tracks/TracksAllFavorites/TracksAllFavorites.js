@@ -5,12 +5,11 @@ import { useGetFavoritesPlaylistQuery } from "../../../services/tracks";
 import React from "react";
 import { setFavoritesPlaylist } from "../../../redux/slices/favoritesSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { SearchContext } from "../../../App";
 
 const TracksAllFavorites = () => {
   const dispatch = useDispatch();
+  const searchValue = useSelector((state) => state.filter.search);
   const { isLoading, data, error } = useGetFavoritesPlaylistQuery();
-  const { searchValue } = React.useContext(SearchContext);
   const playlistFavorites = useSelector((state) => state.favorites.playlist);
 
   React.useEffect(() => {

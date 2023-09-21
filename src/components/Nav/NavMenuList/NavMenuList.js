@@ -3,16 +3,14 @@ import { Link } from "react-router-dom";
 import { removeLocalStorage } from "../../../localStorage";
 import React from "react";
 import { UserContext } from "../../../App";
-import { useSelector } from "react-redux";
 
 const NavMenuList = () => {
   const { setUser } = React.useContext(UserContext);
+
   const handleClickLogout = () => {
     setUser(null);
     removeLocalStorage();
   };
-
-  const playlistFavorites = useSelector((state) => state.favorites.playlist);
 
   return (
     <S.NavMenu>
@@ -24,14 +22,7 @@ const NavMenuList = () => {
         </S.MenuItem>
         <S.MenuItem>
           <Link to="/favorites">
-            <S.MenuLink>
-              Мой плейлист{" "}
-              <span>
-                {playlistFavorites.length
-                  ? `( ${playlistFavorites.length} )`
-                  : ""}
-              </span>
-            </S.MenuLink>
+            <S.MenuLink>Мой плейлист </S.MenuLink>
           </Link>
         </S.MenuItem>
         <S.MenuItem>

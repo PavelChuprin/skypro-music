@@ -30,6 +30,9 @@ const favoritesSlice = createSlice({
     setFavoritesPlaylist: (state, action) => {
       state.playlist = action.payload;
     },
+		setSelectionPlaylist: (state, action) => {
+      state.playlist = action.payload;
+    },
   },
 });
 
@@ -37,6 +40,7 @@ export const {
   addToFavoritesPlaylist,
   deleteFromFavoritesPlaylist,
   setFavoritesPlaylist,
+	setSelectionPlaylist,
 } = favoritesSlice.actions;
 
 export default favoritesSlice.reducer;

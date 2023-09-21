@@ -1,9 +1,11 @@
-import { SearchContext } from "../../../App";
+import { useDispatch, useSelector } from "react-redux";
 import * as S from "./styles";
 import React from "react";
+import { setSearch } from "../../../redux/slices/filterSlice";
 
 const TrackSearch = () => {
-  const { searchValue, setSearchValue } = React.useContext(SearchContext);
+  const dispatch = useDispatch();
+  const searchValue = useSelector((state) => state.filter.search);
 
   return (
     <S.CenterblockSearch>
@@ -15,10 +17,10 @@ const TrackSearch = () => {
         placeholder="Поиск"
         name="search"
         value={searchValue}
-        onChange={(event) => setSearchValue(event.target.value)}
+        onChange={(event) => dispatch(setSearch(event.target.value))}
       ></S.SearchInput>
       {searchValue && (
-        <S.CloseSvg onClick={() => setSearchValue("")}>
+        <S.CloseSvg onClick={() => dispatch(setSearch(""))}>
           <use xlinkHref="img/icon/sprite.svg#icon-close"></use>
         </S.CloseSvg>
       )}

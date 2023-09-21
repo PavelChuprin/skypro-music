@@ -1,31 +1,31 @@
 import * as S from "./styles";
 import { Link } from "react-router-dom";
-import { timer } from "../../../utils/timer";
+import { timer } from "../../../../utils/timer";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentTrack,
   setIsPlaying,
   setVisiblePlayer,
-} from "../../../redux/slices/playerSlice";
+} from "../../../../redux/slices/playerSlice";
 import {
   addToFavoritesPlaylist,
   deleteFromFavoritesPlaylist,
-} from "../../../redux/slices/favoritesSlice";
+} from "../../../../redux/slices/favoritesSlice";
 import React from "react";
 import {
   useAddToFavoritesMutation,
   useDeleteFromFavoritesMutation,
-} from "../../../services/tracks";
+} from "../../../../services/tracks";
 import {
   getLocalStorage,
   getRefreshTokenLocalStorage,
   removeLocalStorage,
   setLocalStorage,
-} from "../../../localStorage";
-import { updateToken } from "../../../API";
-import { UserContext } from "../../../App";
+} from "../../../../localStorage";
+import { updateToken } from "../../../../API";
+import { UserContext } from "../../../../App";
 
-const Track = ({ track }) => {
+const TrackSelection = ({ track }) => {
   const dispatch = useDispatch();
   const currentTrack = useSelector((state) => state.audioplayer.track);
   const isPlaying = useSelector((state) => state.audioplayer.playing);
@@ -143,4 +143,4 @@ const Track = ({ track }) => {
   );
 };
 
-export default Track;
+export default TrackSelection;
