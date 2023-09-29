@@ -11,11 +11,17 @@ const NavMenuBurger = () => {
 
   return (
     <>
-      <S.NavBurger onClick={switchBurgerButton}>
-        <S.BurgerLine></S.BurgerLine>
-        <S.BurgerLine></S.BurgerLine>
-        <S.BurgerLine></S.BurgerLine>
-      </S.NavBurger>
+      {openMenu ? (
+        <S.CloseSvg onClick={switchBurgerButton}>
+          <use xlinkHref="img/icon/sprite.svg#icon-close"></use>
+        </S.CloseSvg>
+      ) : (
+        <S.NavBurger onClick={switchBurgerButton}>
+          <S.BurgerLine></S.BurgerLine>
+          <S.BurgerLine></S.BurgerLine>
+          <S.BurgerLine></S.BurgerLine>
+        </S.NavBurger>
+      )}
       {openMenu && <NavMenuList />}
     </>
   );

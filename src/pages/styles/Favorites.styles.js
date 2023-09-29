@@ -15,6 +15,22 @@ export const CenterblockH2 = styled.h2`
   line-height: 72px;
   letter-spacing: -0.8px;
   margin-bottom: 45px;
+  position: relative;
+`;
+
+export const CategoryCount = styled.div`
+  font-size: 36px;
+  position: absolute;
+  left: -48px;
+  top: -28px;
+  width: 48px;
+  height: 48px;
+  background: -webkit-linear-gradient(-45deg, #ad61ff, #d9b6ff);
+  border-radius: 50%;
+  align-items: center;
+  color: white;
+  display: flex;
+  justify-content: center;
 `;
 
 export const CenterblockContent = styled.div`

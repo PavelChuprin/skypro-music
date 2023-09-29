@@ -42,3 +42,6 @@ export const FilterLi = styled.li`
     text-decoration: underline;
   }
 `;
+export const FilterLiActive = styled(FilterLi)`
+  color: #b672ff;
+`;

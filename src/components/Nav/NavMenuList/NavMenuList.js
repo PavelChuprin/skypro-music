@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { removeLocalStorage } from "../../../localStorage";
 import React from "react";
 import { UserContext } from "../../../App";
+import { useGetFavoritesPlaylistQuery } from "../../../services/tracks";
 
 const NavMenuList = () => {
   const { setUser } = React.useContext(UserContext);
@@ -11,6 +12,8 @@ const NavMenuList = () => {
     setUser(null);
     removeLocalStorage();
   };
+
+  const { data } = useGetFavoritesPlaylistQuery();
 
   return (
     <S.NavMenu>
@@ -23,6 +26,7 @@ const NavMenuList = () => {
         <S.MenuItem>
           <Link to="/favorites">
             <S.MenuLink>Мой плейлист </S.MenuLink>
+            {data && <S.FavCount>{data.length}</S.FavCount>}
           </Link>
         </S.MenuItem>
         <S.MenuItem>

@@ -1,19 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { TrackSkeleton } from "../Track/TrackSkeleton";
 import * as S from "./styles";
+import React from "react";
+import { useParams } from "react-router-dom";
 import {
   useGetFavoritesPlaylistQuery,
   useGetSelectionByIdQuery,
 } from "../../../services/tracks";
-import React from "react";
-import { useParams } from "react-router-dom";
 import {
+  setCategoryPlaylist,
   setFavoritesPlaylist,
-  setSelectionPlaylist,
 } from "../../../redux/slices/favoritesSlice";
-import TrackSelection from "../Track/TrackSelection/TrackSelection";
+import Track from "../Track/Track";
 
-const TracksCategoryAll = () => {
+const TracksAllCategory = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const searchValue = useSelector((state) => state.filter.search);
@@ -24,7 +24,7 @@ const TracksCategoryAll = () => {
   const { currentData } = useGetFavoritesPlaylistQuery();
 
   React.useEffect(() => {
-    dispatch(setSelectionPlaylist(data));
+    dispatch(setCategoryPlaylist(data));
   }, [dispatch, data]);
 
   React.useEffect(() => {
@@ -48,7 +48,7 @@ const TracksCategoryAll = () => {
               return false;
             }
           })
-          .map((track) => <TrackSelection key={track.id} track={track} />)
+          .map((track) => <Track key={track.id} track={track} />)
       ) : (
         <S.ErrorMessage>
           Не удалось загрузить плейлист, попробуйте позже.{" "}
@@ -59,4 +59,4 @@ const TracksCategoryAll = () => {
   );
 };
 
-export default TracksCategoryAll;
+export default TracksAllCategory;

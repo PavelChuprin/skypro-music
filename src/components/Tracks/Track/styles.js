@@ -15,6 +15,7 @@ export const PlaylistTrack = styled.div`
   -ms-flex-align: center;
   align-items: center;
   cursor: pointer;
+  transition: all 0.3s;
   &:hover {
     background-color: #222222;
   }
@@ -96,14 +97,6 @@ export const TrackTitleLink = styled.div`
   color: #ffffff;
 `;
 
-export const TrackTitleSpan = styled.span`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #4e4e4e;
-`;
-
 export const TrackAuthor = styled.div`
   width: 321px;
   display: -webkit-box;
@@ -152,6 +145,7 @@ export const TrackLikeSvg = styled.svg`
     fill: #696969;
     stroke: #ffffff;
     cursor: pointer;
+    scale: 1.2;
   }
 `;
 

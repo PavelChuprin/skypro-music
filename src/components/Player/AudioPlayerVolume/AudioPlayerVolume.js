@@ -15,6 +15,7 @@ const AudioPlayerVolume = ({ setVolume, volume }) => {
     dispatch(setCurrentTrack(null));
     dispatch(setIsPlaying(false));
   };
+
   return (
     <S.BarVolumeBlock>
       <S.VolumeContent>
@@ -44,7 +45,7 @@ const AudioPlayerVolume = ({ setVolume, volume }) => {
         </S.VolumeProgress>
       </S.VolumeContent>
       <S.CloseSvg onClick={handleClosePlayer} className="_btn">
-			<use xlinkHref="img/icon/sprite.svg#icon-close"></use>
+        <use xlinkHref="img/icon/sprite.svg#icon-close"></use>
       </S.CloseSvg>
     </S.BarVolumeBlock>
   );

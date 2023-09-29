@@ -37,17 +37,43 @@ export const FilterButton = styled.div`
   border: 1px solid #ffffff;
   border-radius: 60px;
   padding: 6px 20px;
+  position: relative;
   &:not(:last-child) {
     margin-right: 10px;
   }
   ${(props) =>
     props.$active &&
     `
-    color: #8c21fd;
-    border: 1px solid #8c21fd;
+    color: #b672ff;
+    border: 1px solid #b672ff;
     `}
 `;
 
 export const PositionPopup = styled.div`
   position: relative;
+`;
+
+export const FilterCount = styled.div`
+  width: 24px;
+  height: 24px;
+  background: -webkit-linear-gradient(-45deg, #ad61ff, #d9b6ff);
+  border-radius: 50%;
+  align-items: center;
+  position: absolute;
+  right: -8px;
+  top: -9px;
+  color: white;
+  display: flex;
+  justify-content: center;
+`;
+
+export const CloseSvg = styled.svg`
+  margin-left: 12px;
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
 `;

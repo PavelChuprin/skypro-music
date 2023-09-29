@@ -4,7 +4,8 @@ import TrackTitle from "../components/Tracks/TrackTitle/TrackTitle";
 import * as S from "./styles/Favorites.styles";
 import TrackSearch from "../components/Tracks/TrackSearch/TrackSearch";
 import SidebarPersonal from "../components/Bar/SidebarPersonal/SidebarPersonal";
-import TracksCategoryAll from "../components/Tracks/TrackCategoryAll/TrackCategoryAll";
+import TracksAllCategory from "../components/Tracks/TracksAllCategory/TracksAllCategory";
+import { useGetSelectionByIdQuery } from "../services/tracks";
 
 const CategoryPage = () => {
   const params = useParams();
@@ -13,14 +14,25 @@ const CategoryPage = () => {
     (category) => category.id === Number(params.id)
   );
 
+  const { isLoading, data, error } = useGetSelectionByIdQuery(
+    Number(params.id)
+  );
+
   return (
     <>
       <S.MainCenterblock>
         <TrackSearch />
-        <S.CenterblockH2>{category.title}</S.CenterblockH2>
+        <S.CenterblockH2>
+          {category.title}{" "}
+          {!error && (
+            <S.CategoryCount>
+              {isLoading ? "..." : data && data.items.length}
+            </S.CategoryCount>
+          )}
+        </S.CenterblockH2>
         <S.CenterblockContent>
           <TrackTitle />
-          <TracksCategoryAll />
+          <TracksAllCategory />
         </S.CenterblockContent>
       </S.MainCenterblock>
       <S.SidebarPersonalBlock>

@@ -1,5 +1,4 @@
 import * as S from "./styles";
-import { Link } from "react-router-dom";
 import { timer } from "../../../utils/timer";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -40,7 +39,8 @@ const TrackFavorite = ({ favTrack }) => {
   const [deleteFromFavorites, { error: errorDislike }] =
     useDeleteFromFavoritesMutation();
 
-  const handleClickDislike = (id) => {
+  const handleClickDislike = (event, id) => {
+    event.stopPropagation();
     deleteFromFavorites(id);
     dispatch(deleteFromFavoritesPlaylist(favTrack));
   };
@@ -86,27 +86,18 @@ const TrackFavorite = ({ favTrack }) => {
           )}
         </S.TrackTitleImage>
         <S.TrackTitleText>
-          <Link to="/">
-            <S.TrackTitleLink>
-              {favTrack.name} <S.TrackTitleSpan></S.TrackTitleSpan>
-              <S.TrackTitleSpan>{favTrack.subname}</S.TrackTitleSpan>
-            </S.TrackTitleLink>
-          </Link>
+          <S.TrackTitleLink>{favTrack.name}</S.TrackTitleLink>
         </S.TrackTitleText>
       </S.TrackTitle>
       <S.TrackAuthor>
-        <Link to="/">
-          <S.TrackAuthorLink>{favTrack.author}</S.TrackAuthorLink>
-        </Link>
+        <S.TrackAuthorLink>{favTrack.author}</S.TrackAuthorLink>
       </S.TrackAuthor>
       <S.TrackAlbum>
-        <Link to="/">
-          <S.TrackAlbumLink>{favTrack.album}</S.TrackAlbumLink>
-        </Link>
+        <S.TrackAlbumLink>{favTrack.album}</S.TrackAlbumLink>
       </S.TrackAlbum>
       <S.TrackTime>
         <S.TrackLike
-          onClick={() => handleClickDislike(favTrack.id)}
+          onClick={(event) => handleClickDislike(event, favTrack.id)}
           className="_btn-icon-like"
         >
           <S.TrackLikeSvg alt="time">

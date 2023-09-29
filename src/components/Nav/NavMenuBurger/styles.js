@@ -23,3 +23,13 @@ export const BurgerLine = styled.span`
   height: 1px;
   background-color: #d3d3d3;
 `;
+
+export const CloseSvg = styled.svg`
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
+`;

@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const playerSlice = createSlice({
-  name: "track",
+  name: "audioplayer",
   initialState,
   reducers: {
     setCurrentTrack(state, action) {
@@ -26,13 +26,11 @@ const playerSlice = createSlice({
     setIsShuffle(state) {
       state.shuffle = !state.shuffle;
     },
-    setVisiblePlayer(state) {
-      state.visiblePlayer = !state.visiblePlayer;
+    setVisiblePlayer(state, action) {
+      state.visiblePlayer = action.payload;
     },
   },
 });
-
-export const selectTracks = (state) => state.track.playlist;
 
 export const {
   setCurrentTrack,

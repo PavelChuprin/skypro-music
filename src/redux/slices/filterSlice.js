@@ -5,6 +5,7 @@ const initialState = {
   author: [],
   genre: [],
   years: "По умолчанию",
+  filterPlaylist: [],
 };
 
 const filterSlice = createSlice({
@@ -14,19 +15,27 @@ const filterSlice = createSlice({
     setSearch: (state, action) => {
       state.search = action.payload;
     },
-    setFilterAuthor: (state, action) => {
+    setFilterAuthors: (state, action) => {
       state.author = action.payload;
     },
-    setFilterGenre: (state, action) => {
+    setFilterGenres: (state, action) => {
       state.genre = action.payload;
     },
     setFilterYears: (state, action) => {
       state.years = action.payload;
     },
+    setFilterPlaylist: (state, action) => {
+      state.filterPlaylist = action.payload;
+    },
   },
 });
 
-export const { setSearch, setFilterAuthor, setFilterGenre, setFilterYears } =
-  filterSlice.actions;
+export const {
+  setSearch,
+  setFilterAuthors,
+  setFilterGenres,
+  setFilterYears,
+  setFilterPlaylist,
+} = filterSlice.actions;
 
 export default filterSlice.reducer;

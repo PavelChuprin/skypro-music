@@ -31,9 +31,9 @@ export const SidebarItem = styled.div`
   &:not(:last-child) {
     margin-bottom: 30px;
   }
-	& span{
-		color: tomato;
-	}
+  & span {
+    color: tomato;
+  }
 `;
 
 export const SidebarLink = styled.div`
@@ -44,5 +44,9 @@ export const SidebarLink = styled.div`
 export const SidebarImg = styled.img`
   width: 100%;
   height: auto;
-	padding-bottom: 30px;
+  padding-bottom: 30px;
+  transition: all 0.3s;
+  &:hover {
+    scale: 1.05;
+  }
 `;

@@ -1,5 +1,4 @@
 import * as S from "./styles";
-import { Link } from "react-router-dom";
 import { timer } from "../../../utils/timer";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -49,11 +48,13 @@ const Track = ({ track }) => {
 
   const isLike = track.stared_user.some((users) => users.id === user.id);
 
-  const handleClickLike = (id) => {
+  const handleClickLike = (event, id) => {
+    event.stopPropagation();
     addToFavorites(id);
     dispatch(addToFavoritesPlaylist(track));
   };
-  const handleClickDislike = (id) => {
+  const handleClickDislike = (event, id) => {
+    event.stopPropagation();
     deleteFromFavorites(id);
     dispatch(deleteFromFavoritesPlaylist(track));
   };
@@ -88,8 +89,8 @@ const Track = ({ track }) => {
   }, [dispatch, errorDislike, errorLike]);
 
   return (
-    <S.PlaylistTrack>
-      <S.TrackTitle onClick={onChangeTrack}>
+    <S.PlaylistTrack onClick={onChangeTrack}>
+      <S.TrackTitle>
         <S.TrackTitleImage>
           {currentID === track.id ? (
             <S.TrackTitleCurrent $isPlaying={isPlaying}></S.TrackTitleCurrent>
@@ -100,39 +101,31 @@ const Track = ({ track }) => {
           )}
         </S.TrackTitleImage>
         <S.TrackTitleText>
-          <Link to="/">
-            <S.TrackTitleLink>
-              {track.name} <S.TrackTitleSpan></S.TrackTitleSpan>
-            </S.TrackTitleLink>
-          </Link>
+          <S.TrackTitleLink>{track.name}</S.TrackTitleLink>
         </S.TrackTitleText>
       </S.TrackTitle>
       <S.TrackAuthor>
-        <Link to="/">
-          <S.TrackAuthorLink>{track.author}</S.TrackAuthorLink>
-        </Link>
+        <S.TrackAuthorLink>{track.author}</S.TrackAuthorLink>
       </S.TrackAuthor>
       <S.TrackAlbum>
-        <Link to="/">
-          <S.TrackAlbumLink>{track.album}</S.TrackAlbumLink>
-        </Link>
+        <S.TrackAlbumLink>{track.album}</S.TrackAlbumLink>
       </S.TrackAlbum>
       <S.TrackTime>
         {isLike ? (
           <S.TrackLike
-            onClick={() => handleClickDislike(track.id)}
+            onClick={(event) => handleClickDislike(event, track.id)}
             className="_btn-icon-like"
           >
-            <S.TrackLikeSvg alt="time">
+            <S.TrackLikeSvg alt="like">
               <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
             </S.TrackLikeSvg>
           </S.TrackLike>
         ) : (
           <S.TrackLike
-            onClick={() => handleClickLike(track.id)}
+            onClick={(event) => handleClickLike(event, track.id)}
             className="_btn-icon"
           >
-            <S.TrackLikeSvg alt="time">
+            <S.TrackLikeSvg alt="like">
               <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
             </S.TrackLikeSvg>
           </S.TrackLike>
