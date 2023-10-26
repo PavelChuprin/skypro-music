@@ -3,7 +3,8 @@ import { GlobalStyles } from "./GlobalStyles";
 import { AppRoutes } from "./routes";
 import React from "react";
 import { getLocalStorage } from "./localStorage";
-import { UserContext } from "./hooks/useUserContext";
+
+export const UserContext = React.createContext(null);
 
 function App() {
   const [user, setUser] = React.useState(getLocalStorage());
@@ -11,8 +12,8 @@ function App() {
   return (
     <S.Wrapper>
       <GlobalStyles />
-      <UserContext.Provider value={user}>
-        <AppRoutes setUser={setUser} />
+      <UserContext.Provider value={{ user, setUser }}>
+        <AppRoutes />
       </UserContext.Provider>
     </S.Wrapper>
   );

@@ -1,10 +1,12 @@
-import * as S from "./styles/RegisterLogin.style";
+import * as S from "./styles/RegisterLogin.styles";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { setLocalStorage } from "../localStorage";
-import { fetchLogin } from "../API";
+import { fetchLogin, getAccessToken } from "../API";
+import { UserContext } from "../App";
 
-function LoginPage({ setUser }) {
+function LoginPage() {
+  const { setUser } = React.useContext(UserContext);
   const emailRef = React.useRef(null);
   const passwordRef = React.useRef(null);
   const [errorMessage, setErrorMessage] = React.useState(null);
@@ -24,7 +26,9 @@ function LoginPage({ setUser }) {
       }
 
       const userData = await fetchLogin(email, password);
+      const accessToken = await getAccessToken(email, password);
 
+      userData.accessToken = accessToken;
       setUser(userData);
       setLocalStorage(userData);
       setErrorMessage(null);
@@ -54,7 +58,7 @@ function LoginPage({ setUser }) {
   return (
     <S.PageContainer>
       <S.ModalForm>
-        <Link to="/login">
+        <Link to="/">
           <S.ModalLogo>
             <S.ModalLogoImage src="/img/logo_modal.png" alt="logo" />
           </S.ModalLogo>

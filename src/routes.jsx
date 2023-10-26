@@ -5,21 +5,22 @@ import { CategoryPage } from "./pages/CategoryPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
-import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedeRoute";
-import { useUserContext } from "./hooks/useUserContext";
+import { ProtectedRoute } from "./components/ProtectedeRoute";
+import { Layout } from "./components/Layout";
+import React from "react";
 
-export const AppRoutes = ({ setUser }) => {
-  const user = useUserContext;
-
+export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="login" element={<LoginPage setUser={setUser} />} />
-      <Route path="register" element={<RegisterPage setUser={setUser} />} />
+      <Route path="login" element={<LoginPage />} />
+      <Route path="register" element={<RegisterPage />} />
 
-      <Route element={<ProtectedRoute user={user} redirectPath={"/login"} />}>
-        <Route path="/" element={<HomePage setUser={setUser} />} />
-        <Route path="favorites" element={<FavoritesPage />} />
-        <Route path="category/:id" element={<CategoryPage />} />
+      <Route element={<ProtectedRoute redirectPath={"/login"} />}>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="favorites" element={<FavoritesPage />} />
+          <Route path="selection/:id" element={<CategoryPage />} />
+        </Route>
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />

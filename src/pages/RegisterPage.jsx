@@ -1,10 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
-import * as S from "./styles/RegisterLogin.style";
+import * as S from "./styles/RegisterLogin.styles";
 import React from "react";
-import { fetchRegister } from "../API";
+import { fetchRegister, getAccessToken } from "../API";
 import { setLocalStorage } from "../localStorage";
+import { UserContext } from "../App";
 
-function RegisterPage({ setUser }) {
+function RegisterPage() {
+  const { setUser } = React.useContext(UserContext);
   const [errorMessage, setErrorMessage] = React.useState(null);
   const [disabledButtonLogin, setDisabledButtonLogin] = React.useState(false);
   const emailRef = React.useRef(null);
@@ -25,7 +27,9 @@ function RegisterPage({ setUser }) {
       }
 
       const userData = await fetchRegister(email, password);
+      const accessToken = await getAccessToken(email, password);
 
+      userData.accessToken = accessToken;
       setUser(userData);
       setLocalStorage(userData);
       setErrorMessage(null);
@@ -63,7 +67,7 @@ function RegisterPage({ setUser }) {
   return (
     <S.PageContainer>
       <S.ModalForm>
-        <Link to="/login">
+        <Link to="/">
           <S.ModalLogo>
             <S.ModalLogoImage src="/img/logo_modal.png" alt="logo" />
           </S.ModalLogo>
